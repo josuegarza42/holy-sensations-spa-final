@@ -17,7 +17,7 @@
 </head>
 
 <body>
-
+<!-- url guarda la ruta para poder usar esta variable mas adelante -->
     <?php
     $url = "http://" . $_SERVER['HTTP_HOST'] . "/holy%20sensations%20spa";
     ?>
@@ -37,7 +37,7 @@
             <!-- navbar links -->
             <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
                 <ul class="navbar-nav">
-
+<!-- ESTAMOS EN ESO -->
                     <li class="nav-item">
                         <a href="<?php echo $url ?>/administrador/seccion/productos.php" class="nav-link">ADM Productos</a>
                     </li>
@@ -58,11 +58,11 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link">ADM reviews</a>
                     </li>
-
+<!-- ADMINISTRADOR PUEDE REGRESAR A LA PAGINA EN CUESTION -->
                     <li class="nav-item">
                         <a href=" <?php echo $url ?> " class="nav-link">Ver sitio web</a>
                     </li>
-
+<!-- ESTAMOS EN ESO -->
                     <li class="nav-item ms-2 d-none d-md-inline">
                         <a href="<?php echo $url ?>/administrador/seccion/logout.php" class="btn btn-secondary">Logout</a>
                     </li>
