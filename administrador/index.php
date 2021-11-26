@@ -34,6 +34,7 @@ if ($_POST) {
                     </div>
                     <div class="card-body">
                         <!-- se envian los datos por el metodo post -->
+                        <!-- LOGIN FORM -->
                         <form method="POST">
                             <div class="mb-3">
                                 <label class="form-label"> <i class="bi bi-person-circle"></i> Usuario</label>
