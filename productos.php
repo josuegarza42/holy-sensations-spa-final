@@ -1,4 +1,6 @@
-<?php include("template/header.php")
+<?php include("template/header.php");
+include("funciones.php");
+menuNormal();
 ?>
 <h1>Productos</h1>
 <div class="col-md-4">

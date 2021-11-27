@@ -1,4 +1,6 @@
-<?php include("template/header.php")
+<?php include("template/header.php");
+include("funciones.php");
+menuNormal();
 ?>
 
 <h1>Servicios</h1>

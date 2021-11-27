@@ -1,18 +1,13 @@
 <?php
 function conectaBD()
 {
-	return mysqli_connect("localhost", "root", "", "spa");
+    return mysqli_connect("localhost", "root", "", "spa");
 }
-
 
 $ruta = "http://localhost/holy%20sensations%20spa/";
 
-
-
-
-
-
-function menuNormal (){
+function menuNormal()
+{
 ?>
 
     <!-- NAVBAR -->
@@ -48,7 +43,7 @@ function menuNormal (){
                         <a href="#" class="nav-link"><i class="bi bi-cart2"></i></a>
                     </li>
                     <li class="nav-item ms-2 d-none d-md-inline">
-                        <a href="#" class="btn btn-secondary">Login</a>
+                        <a href="login.php" class="btn btn-secondary">Login</a>
                     </li>
                     <li class="nav-item ms-2 d-none d-md-inline">
                         <a href="registrate.php" class="btn btn-secondary">Registrate</a>
@@ -58,14 +53,21 @@ function menuNormal (){
         </div>
     </nav>
 
-    <?php
+<?php
 }
 ?>
 
 
+
+
+
+
+
+
 <?php
-function menuRegistrate(){
-    ?>
+function menuRegistrate()
+{
+?>
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-md navbar-light">
         <div class="container-xxl">
@@ -81,18 +83,19 @@ function menuRegistrate(){
             </button>
             <!-- navbar links -->
             <li class="nav-item ms-2 d-none d-md-inline">
-                        <a href="#" class="btn btn-secondary">Login</a>
-                    </li>
+                <a href="login.php" class="btn btn-secondary">Login</a>
+            </li>
         </div>
     </nav>
 
-    <?php
+<?php
 }
 ?>
 
 <?php
-function menuLogin(){
-    ?>
+function menuLogin()
+{
+?>
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-md navbar-light">
         <div class="container-xxl">
@@ -107,10 +110,12 @@ function menuLogin(){
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- navbar links -->
-            
+            <li class="nav-item ms-2 d-none d-md-inline">
+                <a href="registrate.php" class="btn btn-secondary">Registrate</a>
+            </li>
         </div>
     </nav>
-    <h1>Login</h1>
-    <?php
+
+<?php
 }
 ?>

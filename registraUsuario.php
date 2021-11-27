@@ -1,4 +1,5 @@
 <?php
+// verificacion  y envio de datos a la BD
 	include("funciones.php");
 
 //espacio para recuperación de datos

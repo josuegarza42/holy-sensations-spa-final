@@ -1,3 +1,4 @@
+<!-- formulario de registro y comprobacion en JS Y PHP -->
 <?php include("template/header.php");
 include("funciones.php");
 menuRegistrate();
@@ -21,11 +22,9 @@ if (isset($_GET['err']) && $_GET['err'] != "") {
     if ($_GET['err'] == "4") {
         $msg = "Usuario registrado correctamente!";
     }
-
 }
 
 ?>
-
 
 <script type="text/javascript">
     function verificaForm() {
@@ -41,9 +40,9 @@ if (isset($_GET['err']) && $_GET['err'] != "") {
         } else if (document.getElementById("Pwd").value != document.getElementById("rePwd").value) {
 
             // document.getElementById("msgErr").innerHTML = "Las contraseñas deben de ser iguales";
-             document.getElementById("Pwd").value == "";
-             document.getElementById("rePwd").value == "";
-             alert ("Las contraseñas no coinciden");
+            document.getElementById("Pwd").value == "";
+            document.getElementById("rePwd").value == "";
+            alert("Las contraseñas no coinciden");
             return false;
         } else {
             return true;
@@ -54,7 +53,7 @@ if (isset($_GET['err']) && $_GET['err'] != "") {
 
 <div class="container">
     <div class="row">
-        <h1 class="h2 text-center">Hola,ingresa tus datos</h1>
+        <h1 class="h2 text-center">Hola ingresa tus datos</h1>
         <?php if ($msg != "") echo "<div id='msgErr'>$msg</div>"; ?>
         <div class="col-md-4">
 
@@ -97,9 +96,6 @@ if (isset($_GET['err']) && $_GET['err'] != "") {
                 </div>
             </div>
         </div>
-
-
-
 
         <?php include("template/footer.php");
         ?>
