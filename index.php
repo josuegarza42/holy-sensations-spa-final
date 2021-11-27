@@ -1,4 +1,6 @@
-<?php include("template/header.php")
+<?php include("template/header.php");
+include("funciones.php");
+menuNormal();
 ?>
 
 <!-- Carousel -->
@@ -33,6 +35,18 @@
         </button>
     </div>
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <section id="reviews" class="bg-light my-5">
     <div class="container-lg">

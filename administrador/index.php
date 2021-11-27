@@ -21,6 +21,7 @@ if ($_POST) {
 </head>
 
 <body>
+
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -44,13 +45,11 @@ if ($_POST) {
                                 <label class="form-label"> <i class="bi bi-shield-lock"></i> Contraseña</label>
                                 <input type="password" class="form-control" name="Pwd" id="Pwd" placeholder="Ingresa tu contraseña">
                             </div>
-                            <button type="submit" class="btn btn-primary"><i class="bi bi-person-check"></i> Sing in </button> <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Registrate</button>
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-person-check"></i> Sign in </button> <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Registrate</button>
                             <button type="submit" class="btn btn-danger"> <i class="bi bi-x-circle"></i> Regresar</button>
                         </form>
                     </div>
-
                 </div>
-
             </div>
 
 
