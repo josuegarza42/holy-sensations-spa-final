@@ -6,50 +6,43 @@ function conectaBD()
 
 $ruta = "http://localhost/holy%20sensations%20spa/";
 
-
 function recuperaRol($c)
 {
-	//el usuario debe estar autenticado por medio de $_SESSION["idU"]
-	$qry = "select R.Nombre from roles as R inner join usuarios as U on R.idRol=U.idRol where U.idUsuario=" . $_SESSION['idU'];
-	$rs = mysqli_query($c, $qry);
-	$filaNombre = mysqli_fetch_object($rs);
-	return $filaNombre->Nombre;
+    //el usuario debe estar autenticado por medio de $_SESSION["idU"]
+    $qry = "select R.Nombre from roles as R inner join usuarios as U on R.idRol=U.idRol where U.idUsuario=" . $_SESSION['idU'];
+    $rs = mysqli_query($c, $qry);
+    $filaNombre = mysqli_fetch_object($rs);
+    return $filaNombre->Nombre;
 }
 function recuperaNombre($c)
 {
-	//el usuario debe estar autenticado por medio de $_SESSION["idU"]
-	$qry = "select Nombre from usuarios where idUsuario=" . $_SESSION['idU'];
-	$rs = mysqli_query($c, $qry);
-	$filaNombre = mysqli_fetch_object($rs);
-	return $filaNombre->Nombre;
+    //el usuario debe estar autenticado por medio de $_SESSION["idU"]
+    $qry = "select Nombre from usuarios where idUsuario=" . $_SESSION['idU'];
+    $rs = mysqli_query($c, $qry);
+    $filaNombre = mysqli_fetch_object($rs);
+    return $filaNombre->Nombre;
 }
 
 function recuperaContra($c)
 {
-	//el usuario debe estar autenticado por medio de $_SESSION["idU"]
-	$qry = "select Pwd from usuarios where idUsuario=" . $_SESSION['idU'];
-	$rs = mysqli_query($c, $qry);
-	$filaNombre = mysqli_fetch_object($rs);
-	return $filaNombre->Pwd;
+    //el usuario debe estar autenticado por medio de $_SESSION["idU"]
+    $qry = "select Pwd from usuarios where idUsuario=" . $_SESSION['idU'];
+    $rs = mysqli_query($c, $qry);
+    $filaNombre = mysqli_fetch_object($rs);
+    return $filaNombre->Pwd;
 }
 function recuperaId($c)
 {
-	//el usuario debe estar autenticado por medio de $_SESSION["idU"]
-	$qry = "select idUsuario from usuarios where idUsuario=" . $_SESSION['idU'];
-	$rs = mysqli_query($c, $qry);
-	$filaNombre = mysqli_fetch_object($rs);
-	return $filaNombre->idUsuario;
+    //el usuario debe estar autenticado por medio de $_SESSION["idU"]
+    $qry = "select idUsuario from usuarios where idUsuario=" . $_SESSION['idU'];
+    $rs = mysqli_query($c, $qry);
+    $filaNombre = mysqli_fetch_object($rs);
+    return $filaNombre->idUsuario;
 }
-
-
-
-
-
 
 function menuNormal()
 {
 ?>
-
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-md navbar-light">
         <div class="container-xxl">
@@ -97,10 +90,10 @@ function menuNormal()
 }
 ?>
 
-<?php 
-
-function navbarAth(){
-    ?>
+<?php
+function navbarAth()
+{
+?>
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-md navbar-light">
         <div class="container-xxl">
@@ -129,7 +122,7 @@ function navbarAth(){
                     <li class="nav-item">
                         <a href="nosotros.php" class="nav-link">Nosotros</a>
                     </li>
-
+                    <!-- carrito -->
                     <li class="nav-item d-md">
                         <a href="#" class="nav-link"><i class="bi bi-cart2"></i></a>
                     </li>
@@ -145,16 +138,7 @@ function navbarAth(){
     </nav>
 <?php
 }
-
-
 ?>
-
-
-
-
-
-
-
 
 <?php
 function menuRegistrate()
@@ -211,19 +195,6 @@ function menuLogin()
 <?php
 }
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <?php
 function estructuraPrincipalIndex()
