@@ -127,7 +127,7 @@ function navbarAth()
                         <a href="#" class="nav-link"><i class="bi bi-cart2"></i></a>
                     </li>
                     <li class="nav-item ms-2 d-none d-md-inline">
-                        <a href="#" class="btn btn-secondary">Cuenta</a>
+                        <a href="cuenta.php" class="btn btn-secondary">Cuenta</a>
                     </li>
                     <li class="nav-item ms-2 d-none d-md-inline">
                         <a href="logout.php" class="btn btn-secondary">Salir</a>
@@ -292,6 +292,37 @@ function estructuraPrincipalIndex()
             </div>
         </div>
     </section>
+<?php
+}
+?>
+
+
+<?php
+function despliegaDatos($dUsr)
+{
+?>
+    <div class="container-fluid">
+        <br>
+        <h3 class="h3 mx-auto" style="text-align:center">Tú Perfil</h3>
+        <br>
+        <div class="card mb-4 mx-auto" style="max-width: 320px;">
+                <div class="col">
+                    <div class="card-body">
+                        <h5 class="card-title"><b>Nombre:</b> <?php echo $_SESSION['nombre'] ?></h5>
+                        <p class="card-text">
+                        <p class="card-text"><small class="text-muted">Información de usuario:</small></p>
+                            <b>Email: </b> <?php echo $dUsr->Email ?><br>
+                            <b>Rol: </b> <?php echo $dUsr->NombreRol ?><br>
+                            <b>Direccion: </b> <?php echo $dUsr->Direccion ?><br>
+
+                        </p>
+     
+                        <a name="" id="" class="btn btn-danger" href="eliminarCuenta.php" role="button">Eliminar cuenta</a>
+                    </div>
+                </div>
+
+        </div>
+    </div>
 <?php
 }
 ?>
