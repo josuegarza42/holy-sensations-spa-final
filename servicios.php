@@ -34,7 +34,7 @@ if (isset($_SESSION['idU']) && isset($_SESSION['nombre']))    //el usuario se au
 ?>
 
 <h1>Servicios</h1>
-<!-- TODO LA IMAGEN ESTA DE PRUEBA -->
+<!-- TODO LA IMAGEN ESTA DE PRUEBA a espera de ADM -->
 <div class="col-md-4">
     <div class="card">
         <img class="card-img-top" src="img/masajes.png" alt="">

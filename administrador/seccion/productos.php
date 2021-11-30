@@ -6,7 +6,7 @@ include('../template/header.php');
 
 
 // si hay algo en txtCUALSEA ASIGNALO, si no ponlo vacio
-$txtID = (isset($_POST['txtID'])) ? $_POST['txtID'] : "";
+// $txtID = (isset($_POST['txtID'])) ? $_POST['txtID'] : "";
 $txtNombre = (isset($_POST['txtNombre'])) ? $_POST['txtNombre'] : "";
 $txtDescripcion = (isset($_POST['txtDescripcion'])) ? $_POST['txtDescripcion'] : "";
 $txtPrecio = (isset($_POST['txtPrecio'])) ? $_POST['txtPrecio'] : "";
@@ -17,23 +17,29 @@ $txtImagen = (isset($_FILES['txtImagen']['name'])) ? $_FILES['txtImagen']['name'
 // accion 
 $accion = (isset($_POST['accion'])) ? $_POST['accion'] : "";
 // PRUEBAS
-echo $txtID . "<br/>";
-echo $txtNombre . "<br/>";
-echo $txtDescripcion . "<br/>";
-echo $txtPrecio . "<br/>";
-echo $txtCantidad . "<br/>";
-echo $txtCategoria . "<br/>";
-// imagen
-echo $txtImagen . "<br/>";
-echo $accion . "<br/>";
+// echo $txtID . "<br/>";
+// echo $txtNombre . "<br/>";
+// echo $txtDescripcion . "<br/>";
+// echo $txtPrecio . "<br/>";
+// echo $txtCantidad . "<br/>";
+// echo $txtCategoria . "<br/>";
+// // imagen
+// echo $txtImagen . "<br/>";
+// echo $accion . "<br/>";
 
 // 
 // conexion a la BASE DE DATOS
 include('../config/bd.php');
 switch ($accion) {
     case "Agregar":
-        $sentenciaSQL=$conexion->prepare("INSERT INTO `producto` (`idProducto`, `Nombre`, `Descripcion`, `Precio`, `Cantidad`, `Categoria`) VALUES (NULL, 'crema', 'crema para barros', '299', '3', 'cremas');");
+        $sentenciaSQL=$conexion->prepare("INSERT INTO producto (Nombre,Descripcion,Precio,Cantidad,Categoria) VALUES (:Nombre,:Descripcion,:Precio,:Cantidad,:Categoria);");
         // INSERT INTO `producto` (`idProducto`, `Nombre`, `Descripcion`, `Precio`, `Cantidad`, `Categoria`) VALUES ('1', 'crema', 'crema para barros', '299', '3', 'cremas');
+        $sentenciaSQL->bindParam(':Nombre',$txtNombre);
+        $sentenciaSQL->bindParam(':Descripcion',$txtDescripcion);
+        $sentenciaSQL->bindParam(':Precio',$txtPrecio);
+        $sentenciaSQL->bindParam(':Cantidad',$txtCantidad);
+        $sentenciaSQL->bindParam(':Categoria',$txtCategoria);
+
         $sentenciaSQL->execute();
         echo "Presionado boton agregar";
         break;
@@ -58,10 +64,10 @@ switch ($accion) {
             <!-- INSERT INTO `producto` (`idProducto`, `Nombre`, `Descripcion`, `Precio`, `Cantidad`, `Categoria`) VALUES ('1', 'crema', 'crema para barros', '299', '3', 'cremas'); -->
             <form method="POST" enctype="multipart/form-data">
                 <!-- id -->
-                <div class="form-group mb-3">
+                <!-- <div class="form-group mb-3">
                     <label class="txtID"> <i class="bi bi-fingerprint"></i> ID:</label>
                     <input type="text" class="form-control" name="txtID" id="txtID" placeholder="Inserta el id del producto">
-                </div>
+                </div> -->
                 <!-- nombre -->
                 <div class="form-group mb-3">
                     <label class="txtNombre"><i class="bi bi-card-text"></i> Nombre del producto:</label>
@@ -89,12 +95,12 @@ switch ($accion) {
                 </div>
 
                 <!-- imagen -->
-                <div class="form-group mb-3">
+                <!-- <div class="form-group mb-3">
                     <label for="txtImagen"><i class="bi bi-card-image"></i> Imagen del producto:</label>
                     <input type="file" class="form-control" name="txtImagen" id="txtImagen" placeholder="Inserta la imagen del producto">
-                </div>
+                </div> -->
 
-                <!-- TODO DESCRIPCION PRECIO -->
+
 
                 <div class="btn-group " role="group" aria-label="">
                     <button type="submit" name="accion" value="Agregar" class="btn btn-success mx-2">Agregar</button>

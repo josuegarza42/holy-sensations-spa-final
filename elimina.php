@@ -1,4 +1,4 @@
-<!-- TODO NO FUNCIONA BIEN  -->
+<!-- TODO NO FUNCIONA Correctamente  -->
 <?php
 session_start();
 include("funciones.php");

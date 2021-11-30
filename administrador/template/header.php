@@ -56,7 +56,7 @@
                     </li>
                     <!-- TODO aun no jala -->
                     <li class="nav-item">
-                        <a href="#" class="nav-link">ADM reviews</a>
+                        <a href="#" class="nav-link">ADM Categorias</a>
                     </li>
 <!-- ADMINISTRADOR PUEDE REGRESAR A LA PAGINA EN CUESTION -->
                     <li class="nav-item">

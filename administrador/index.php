@@ -22,6 +22,10 @@ if ($_POST) {
 
 <body>
 
+    <?php
+    $url = "http://" . $_SERVER['HTTP_HOST'] . "/holy%20sensations%20spa";
+    ?>
+
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -31,7 +35,7 @@ if ($_POST) {
                 <br><br><br>
                 <div class="card">
                     <div class="card-header">
-                        <p><i class="bi bi-door-open"></i> Login</p>
+                        <p><i class="bi bi-door-open"></i> Login Administrador</p>
                     </div>
                     <div class="card-body">
                         <!-- se envian los datos por el metodo post -->
@@ -39,20 +43,21 @@ if ($_POST) {
                         <form method="POST">
                             <div class="mb-3">
                                 <label class="form-label"> <i class="bi bi-person-circle"></i> Usuario</label>
-                                <input type="email" class="form-control" name="usuario" id="usuario" placeholder="Ingresa tu usuario">
+                                <input type="email" class="form-control" name="Nombre" id="Nombre" placeholder="Ingresa tu usuario">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label"> <i class="bi bi-shield-lock"></i> Contraseña</label>
                                 <input type="password" class="form-control" name="Pwd" id="Pwd" placeholder="Ingresa tu contraseña">
                             </div>
-                            <button type="submit" class="btn btn-primary"><i class="bi bi-person-check"></i> Sign in </button> <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Registrate</button>
-                            <button type="submit" class="btn btn-danger"> <i class="bi bi-x-circle"></i> Regresar</button>
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-person-check"></i> Sign in </button> <a href=" <?php echo $url ?> " class="btn btn-danger">Regresar al sitio web</a>
+
+
                         </form>
                     </div>
                 </div>
             </div>
 
 
-<?php
-include('template/footer.php');
-?>
+            <?php
+            include('template/footer.php');
+            ?>
