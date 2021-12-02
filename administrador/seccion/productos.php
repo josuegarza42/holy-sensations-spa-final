@@ -52,12 +52,32 @@ switch ($accion) {
         header("Location:productos.php");
         // echo "Presionado boton agregar";
         break;
-        // TODO NO FUNCIONA MODIFICAR
+  
     case "Modificar":
         // echo "Presionado boton Modificar";
         // SE MODIFICAN LOS TEXTOS, EN ESTE CASO SOLO EL NOMBRE, PUES NECESITAMOS PROBAR
         $sentenciaSQL = $conexion->prepare("UPDATE producto SET Nombre=:Nombre WHERE idProducto=:idProducto");
         $sentenciaSQL->bindParam(':Nombre', $txtNombre);
+        $sentenciaSQL->bindParam(':idProducto', $txtID);
+        $sentenciaSQL->execute();
+
+        $sentenciaSQL = $conexion->prepare("UPDATE producto SET Descripcion=:Descripcion WHERE idProducto=:idProducto");
+        $sentenciaSQL->bindParam(':Descripcion', $txtDescripcion);
+        $sentenciaSQL->bindParam(':idProducto', $txtID);
+        $sentenciaSQL->execute();
+
+        $sentenciaSQL = $conexion->prepare("UPDATE producto SET Precio=:Precio WHERE idProducto=:idProducto");
+        $sentenciaSQL->bindParam(':Precio', $txtPrecio);
+        $sentenciaSQL->bindParam(':idProducto', $txtID);
+        $sentenciaSQL->execute();
+
+        $sentenciaSQL = $conexion->prepare("UPDATE producto SET Cantidad=:Cantidad WHERE idProducto=:idProducto");
+        $sentenciaSQL->bindParam(':Cantidad', $txtCantidad);
+        $sentenciaSQL->bindParam(':idProducto', $txtID);
+        $sentenciaSQL->execute();
+
+        $sentenciaSQL = $conexion->prepare("UPDATE producto SET Categoria=:Categoria WHERE idProducto=:idProducto");
+        $sentenciaSQL->bindParam(':Categoria', $txtCategoria);
         $sentenciaSQL->bindParam(':idProducto', $txtID);
         $sentenciaSQL->execute();
 
@@ -82,13 +102,13 @@ switch ($accion) {
                     unlink("../../img/" . $Producto["Imagen"]);
                 }
             }
-            // HACEMOS EL UPDATE
+            // HACEMOS EL UPDATE DE LA IMAGEN
             $sentenciaSQL = $conexion->prepare("UPDATE producto SET Imagen=:Imagen WHERE idProducto=:idProducto");
-            $sentenciaSQL->bindParam(':Imagen', $txtNombre);
-            $sentenciaSQL->bindParam(':idProducto', $nombreArchivo);
+            $sentenciaSQL->bindParam(':Imagen', $nombreArchivo);
+            $sentenciaSQL->bindParam(':idProducto', $txtID);
             $sentenciaSQL->execute();
         }
-        header("Location:productos.php");
+        // header("Location:productos.php");
         break;
 
     case "Cancelar":
