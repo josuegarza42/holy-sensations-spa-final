@@ -30,7 +30,7 @@ $accion = (isset($_POST['accion'])) ? $_POST['accion'] : "";
 include('../config/bd.php');
 switch ($accion) {
     case "Agregar":
-        $sentenciaSQL = $conexion->prepare("INSERT INTO producto (Nombre,Descripcion,Precio,Cantidad,Categoria) VALUES (:Nombre,:Descripcion,:Precio,:Cantidad,:Categoria);");
+        $sentenciaSQL = $conexion->prepare("INSERT INTO producto (Nombre,Descripcion,Precio,Cantidad,Categoria,Imagen) VALUES (:Nombre,:Descripcion,:Precio,:Cantidad,:Categoria,:Imagen);");
         // INSERT INTO `producto` (`idProducto`, `Nombre`, `Descripcion`, `Precio`, `Cantidad`, `Categoria`) VALUES ('1', 'crema', 'crema para barros', '299', '3', 'cremas');
         $sentenciaSQL->bindParam(':Nombre', $txtNombre);
         $sentenciaSQL->bindParam(':Descripcion', $txtDescripcion);
@@ -38,36 +38,99 @@ switch ($accion) {
         $sentenciaSQL->bindParam(':Cantidad', $txtCantidad);
         $sentenciaSQL->bindParam(':Categoria', $txtCategoria);
 
+        $fecha = new DateTime();
+        $nombreArchivo = ($txtImagen != "") ? $fecha->getTimestamp() . "_" . $_FILES["txtImagen"]["name"] : "imagen.jpg";
+
+        $tmpImagen = $_FILES["txtImagen"]["tmp_name"];
+
+        if ($tmpImagen != "") {
+            move_uploaded_file($tmpImagen, "../../img/" . $nombreArchivo);
+        }
+
+        $sentenciaSQL->bindParam(':Imagen', $nombreArchivo);
         $sentenciaSQL->execute();
+        header("Location:productos.php");
         // echo "Presionado boton agregar";
         break;
+        // TODO NO FUNCIONA MODIFICAR
     case "Modificar":
         // echo "Presionado boton Modificar";
+        // SE MODIFICAN LOS TEXTOS, EN ESTE CASO SOLO EL NOMBRE, PUES NECESITAMOS PROBAR
+        $sentenciaSQL = $conexion->prepare("UPDATE producto SET Nombre=:Nombre WHERE idProducto=:idProducto");
+        $sentenciaSQL->bindParam(':Nombre', $txtNombre);
+        $sentenciaSQL->bindParam(':idProducto', $txtID);
+        $sentenciaSQL->execute();
+
+        // CUANDO LLEGUE A LA IMAGEN
+        if ($txtImagen != "") {
+            // SE CARGA EL ARCHIVO IMAGEN 
+            $fecha = new DateTime();
+            $nombreArchivo = ($txtImagen != "") ? $fecha->getTimestamp() . "_" . $_FILES["txtImagen"]["name"] : "imagen.jpg";
+            $tmpImagen = $_FILES["txtImagen"]["tmp_name"];
+
+            move_uploaded_file($tmpImagen, "../../img/" . $nombreArchivo);
+
+            // SELECCIONAMOS LA IMAGEN POR MODIFICAR
+            $sentenciaSQL = $conexion->prepare("SELECT Imagen FROM producto WHERE idProducto=:idProducto");
+            $sentenciaSQL->bindParam(':idProducto', $txtID);
+            $sentenciaSQL->execute();
+
+            $Producto = $sentenciaSQL->fetch(PDO::FETCH_LAZY);
+            // BORRAMOS "ARCHIVO POR ACTUALIZAR"
+            if (isset($Producto["Imagen"]) && ($Producto["Imagen"] != "imagen.jpg")) {
+                if (file_exists("../../img/" . $Producto["Imagen"])) {
+                    unlink("../../img/" . $Producto["Imagen"]);
+                }
+            }
+            // HACEMOS EL UPDATE
+            $sentenciaSQL = $conexion->prepare("UPDATE producto SET Imagen=:Imagen WHERE idProducto=:idProducto");
+            $sentenciaSQL->bindParam(':Imagen', $txtNombre);
+            $sentenciaSQL->bindParam(':idProducto', $nombreArchivo);
+            $sentenciaSQL->execute();
+        }
+        header("Location:productos.php");
         break;
+
     case "Cancelar":
+        header("Location:productos.php");
+
         // echo "Presionado boton Cancelar";
         break;
     case "Seleccionar":
-        // echo "Presionado boton seleccionar";
+
         $sentenciaSQL = $conexion->prepare("SELECT * FROM producto WHERE idProducto=:idProducto");
         $sentenciaSQL->bindParam(':idProducto', $txtID);
         $sentenciaSQL->execute();
         // asigna a lista productos UNO A UNO CON LAZY
         $Producto = $sentenciaSQL->fetch(PDO::FETCH_LAZY);
-
+        $txtID = $Producto['idProducto'];
         $txtNombre = $Producto['Nombre'];
         $txtDescripcion = $Producto['Descripcion'];
         $txtPrecio = $Producto['Precio'];
         $txtCantidad = $Producto['Cantidad'];
         $txtCategoria = $Producto['Categoria'];
-
+        $txtImagen = $Producto['Imagen'];
+        // echo "Presionado boton seleccionar";
         break;
     case "Borrar":
+
+        $sentenciaSQL = $conexion->prepare("SELECT Imagen FROM producto WHERE idProducto=:idProducto");
+        $sentenciaSQL->bindParam(':idProducto', $txtID);
+        $sentenciaSQL->execute();
+        // asigna a lista productos UNO A UNO CON LAZY
+        $Producto = $sentenciaSQL->fetch(PDO::FETCH_LAZY);
+
+        if (isset($Producto["Imagen"]) && ($Producto["Imagen"] != "imagen.jpg")) {
+            if (file_exists("../../img/" . $Producto["Imagen"])) {
+                unlink("../../img/" . $Producto["Imagen"]);
+            }
+        }
 
         $sentenciaSQL = $conexion->prepare("DELETE FROM producto WHERE idProducto=:idProducto");
         $sentenciaSQL->bindParam(':idProducto', $txtID);
         $sentenciaSQL->execute();
         // echo "Presionado boton borrar";
+        header("Location:productos.php");
         break;
 }
 
@@ -88,46 +151,53 @@ $listaProductos = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
             <!-- INSERT INTO `producto` (`idProducto`, `Nombre`, `Descripcion`, `Precio`, `Cantidad`, `Categoria`) VALUES ('1', 'crema', 'crema para barros', '299', '3', 'cremas'); -->
             <form method="POST" enctype="multipart/form-data">
                 <!-- id -->
-                <!-- <div class="form-group mb-3">
+                <div class="form-group mb-3">
                     <label class="txtID"> <i class="bi bi-fingerprint"></i> ID:</label>
-                    <input type="text" class="form-control" name="txtID" id="txtID" placeholder="Inserta el id del producto">
-                </div> -->
+                    <input type="text" value="<?php echo $txtID; ?>" required readonly class="form-control" name="txtID" id="txtID">
+                </div>
                 <!-- nombre -->
                 <div class="form-group mb-3">
                     <label class="txtNombre"><i class="bi bi-card-text"></i> Nombre del producto:</label>
-                    <input type="text" class="form-control" value=" <?php echo $txtNombre ?>" name="txtNombre" id="txtNombre" placeholder="Inserta el nombre del producto">
+                    <input type="text" required class="form-control" value=" <?php echo $txtNombre; ?>" name="txtNombre" id="txtNombre" placeholder="Inserta el nombre del producto">
                 </div>
                 <!-- descripcion -->
                 <div class="form-group mb-3">
                     <label class="txtDescripcion"><i class="bi bi-tags-fill"></i> Descripcion del producto:</label>
-                    <input type="text" class="form-control" value=" <?php echo $txtDescripcion ?>" name="txtDescripcion" id="txtDescripcion" placeholder="Inserta la descripcion del producto">
+                    <input required type="text" class="form-control" value=" <?php echo $txtDescripcion; ?>" name="txtDescripcion" id="txtDescripcion" placeholder="Inserta la descripcion del producto">
                 </div>
                 <!-- precio -->
                 <div class="form-group mb-3">
                     <label class="txtPrecio"><i class="bi bi-currency-dollar"></i> Precio del producto:</label>
-                    <input type="text" class="form-control" value=" <?php echo $txtPrecio ?>" name="txtPrecio" id="txtPrecio" placeholder="Inserta el precio del producto">
+                    <input type="text" required class="form-control" value=" <?php echo $txtPrecio; ?>" name="txtPrecio" id="txtPrecio" placeholder="Inserta el precio del producto">
                 </div>
                 <!-- cantidad -->
                 <div class="form-group mb-3">
                     <label class="txtCantidad"><i class="bi bi-bag-plus"></i> Cantidad en stock del producto:</label>
-                    <input type="text" class="form-control" value=" <?php echo $txtCantidad ?>" name="txtCantidad" id="txtCantidad" placeholder="Inserta la cantidad que tienes del producto">
+                    <input type="text" required class="form-control" value=" <?php echo $txtCantidad; ?>" name="txtCantidad" id="txtCantidad" placeholder="Inserta la cantidad que tienes del producto">
                 </div>
                 <!-- categoria -->
                 <div class="form-group mb-3">
                     <label class="txtCategoria"><i class="bi bi-tags-fill"></i> Categoria del producto:</label>
-                    <input type="text" class="form-control" value=" <?php echo $txtCategoria ?>" name="txtCategoria" id="txtCategoria" placeholder="Inserta la categoria del producto">
+                    <input type="text" required class="form-control" value=" <?php echo $txtCategoria; ?>" name="txtCategoria" id="txtCategoria" placeholder="Inserta la categoria del producto">
                 </div>
 
                 <!-- imagen -->
-                <!-- <div class="form-group mb-3">
+                <div class="form-group mb-3">
                     <label for="txtImagen"><i class="bi bi-card-image"></i> Imagen del producto:</label>
+
+                    <?php
+                    if ($txtImagen != "") {  ?>
+                        <img class="img-thumbnail rounded" src="../../img/<?php echo $txtImagen ?>" width="50" alt="">
+
+                    <?php } ?>
+
                     <input type="file" class="form-control" name="txtImagen" id="txtImagen" placeholder="Inserta la imagen del producto">
-                </div> -->
+                </div>
 
                 <div class="btn-group " role="group" aria-label="">
-                    <button type="submit" name="accion" value="Agregar" class="btn btn-success mx-2">Agregar</button>
-                    <button type="submit" name="accion" value="Modificar" class="btn btn-warning mx-2">Modificar</button>
-                    <button type="submit" name="accion" value="Cancelar" class="btn btn-danger mx-2">Cancelar</button>
+                    <button type="submit" name="accion" value="Agregar" <?php echo ($accion == "Seleccionar") ? "disabled" : ""; ?> class="btn btn-success mx-2">Agregar</button>
+                    <button type="submit" name="accion" value="Modificar" <?php echo ($accion != "Seleccionar") ? "disabled" : ""; ?>class="btn btn-warning mx-2">Modificar</button>
+                    <button type="submit" name="accion" value="Cancelar" <?php echo ($accion != "Seleccionar") ? "disabled" : ""; ?>class="btn btn-danger mx-2">Cancelar</button>
                 </div>
             </form>
         </div>
@@ -146,6 +216,7 @@ $listaProductos = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                 <th>Precio</th>
                 <th>Cantidad</th>
                 <th>Categoria</th>
+                <th>Imagen</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -160,10 +231,14 @@ $listaProductos = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                     <td><?php echo $producto['Categoria']; ?></td>
 
                     <td>
+                        <img class="img-thumbnail rounded" src="../../img/<?php echo $producto['Imagen']; ?>" width="50" alt="">
+                    </td>
+
+                    <td>
                         <!-- borrar -->
                         <form method="post">
                             <input type="hidden" name="txtID" id="txtID" value="<?php echo $producto['idProducto']; ?>" />
-                            <input type="submit" name="accion" value="Seleccionar" class="btn btn-primary" /> <input type="submit" name="accion" value="Borrar" class="btn btn-danger" />
+                            <input type="submit" name="accion" value="Seleccionar" class="btn btn-primary" /> <br> <br> <input type="submit" name="accion" value="Borrar" class="btn btn-danger" />
                         </form>
                 </tr>
             <?php } ?>
