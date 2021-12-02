@@ -33,5 +33,5 @@ if (isset($_SESSION['idU']) && isset($_SESSION['nombre']))    //el usuario se au
 }
 ?>
 
-<?php include("template/footer.php")
+<?php include("template/footer.php");
 ?>
