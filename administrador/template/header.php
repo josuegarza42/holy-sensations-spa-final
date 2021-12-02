@@ -1,3 +1,8 @@
+<?php 
+session_start();
+// if(!isset $_SESSION[''])
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
