@@ -27,8 +27,9 @@ if (isset($_SESSION['idU']) && isset($_SESSION['nombre']))    //el usuario se au
 
     }
     if ($rolUsr == "Administrador") {
-        // encabezado();
-        // menuAdmin($NombreUsr);
+        menuAdmin($NombreUsr);
+        echo "<h1>Hola " . $_SESSION['nombre'] . "</h1>";
+   
     }
 }
 ?>

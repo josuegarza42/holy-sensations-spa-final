@@ -28,7 +28,9 @@ if (isset($_SESSION['idU']) && isset($_SESSION['nombre']))    //el usuario se au
     }
     if ($rolUsr == "Administrador") {
 //   boton para ir a adm y boton para regresar
-        // menuAdmin($NombreUsr);
+        menuAdmin($NombreUsr);
+        echo "<h1>Hola " . $_SESSION['nombre'] . "</h1>";
+        estructuraPrincipalIndex();
     }
 }
 ?>

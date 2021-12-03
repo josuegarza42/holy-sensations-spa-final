@@ -71,6 +71,7 @@ session_start();
                     <li class="nav-item ms-2 d-none d-md-inline">
                         <a href="<?php echo $url ?>/administrador/seccion/logout.php" class="btn btn-secondary">Logout</a>
                     </li>
+                    
                 </ul>
             </div>
         </div>
