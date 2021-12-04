@@ -33,17 +33,32 @@ if (isset($_SESSION['idU']) && isset($_SESSION['nombre']))    //el usuario se au
 }
 ?>
 
-<h1>Servicios</h1>
+<?php
+include("administrador/config/bd.php");
+$sentenciaSQL = $conexion->prepare("SELECT * FROM servicios");
+$sentenciaSQL->execute();
+// asigna a lista productos todos los datos recuperados  con fetchAll
+$listaServicios = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
+?>
+<!-- aqui comienza la magia TODO -->
+
+
+<!-- card 1 -->
+<?php foreach ($listaServicios as $servicio) { ?>
 
 <div class="col-md-4">
     <div class="card">
-        <img class="card-img-top" src="img/masajes.png" alt="">
+        <img class="card-img-top" src="./img/<?php echo $servicio['Imagen']; ?>" alt="">
         <div class="card-body">
-            <h4 class="card-title">Masajes</h4>
-            <a name="" id="" class="btn btn-primary" href="#" role="button"> <i class="bi bi-cart-plus"></i> </a>
+            <h3 class="card-title"> <?php echo $servicio['Nombre']; ?></h3>
+            <p class="card-text"><?php echo $servicio['Descripcion']; ?></p>
+            <p class="card-text"><?php echo $servicio['Precio']; ?></p>
+            <p class="card-text">Cantidad en stock: <?php echo $servicio['Duracion']; ?></p>
+
         </div>
     </div>
 </div>
+<?php  } ?>
 
 <?php include("template/footer.php");
 ?>

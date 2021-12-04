@@ -19,7 +19,7 @@ if ($_POST) {
     <!-- css boostrap -->
     <link rel="stylesheet" href="./css/bootstrap.min.css">
 </head>
-
+<!-- TODO IDK si esto jala -->
 <body>
 
     <?php
