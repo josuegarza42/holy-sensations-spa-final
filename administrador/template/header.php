@@ -55,7 +55,7 @@ if (!isset($_SESSION['idU']) && !isset($_SESSION['nombre'])) {
 
                     <!-- TODO aun no jala -->
                     <li class="nav-item">
-                        <a href="#" class="nav-link"> ADM Servicios</a>
+                        <a href="<?php echo $url ?>/administrador/seccion/servicios.php" class="nav-link">ADM Servicios</a>
                     </li>
                     <!-- TODO aun no jala -->
                     <li class="nav-item">
@@ -65,7 +65,7 @@ if (!isset($_SESSION['idU']) && !isset($_SESSION['nombre'])) {
                     <li class="nav-item">
                         <a href="#.php" class="nav-link">ADM compras</a>
                     </li>
-                    <!-- TODO aun no jala -->
+                    <!-- TODO aun no jala POSIBLE CAMBIO A TERAPEUTAS AFILIADOS -->
                     <li class="nav-item">
                         <a href="#" class="nav-link">ADM Categorias</a>
                     </li>
@@ -73,7 +73,7 @@ if (!isset($_SESSION['idU']) && !isset($_SESSION['nombre'])) {
                     <li class="nav-item">
                         <a href=" <?php echo $url ?> " class="nav-link">Ver sitio web</a>
                     </li>
-                    <!-- ESTAMOS EN ESO -->
+                    <!-- LOGOUT -->
                     <li class="nav-item ms-2 d-none d-md-inline">
                         <a href="<?php echo $url ?>/administrador/seccion/logout.php" class="btn btn-secondary">Logout</a>
                     </li>

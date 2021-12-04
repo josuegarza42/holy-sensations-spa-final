@@ -38,7 +38,7 @@ $sentenciaSQL->execute();
 // asigna a lista productos todos los datos recuperados  con fetchAll
 $listaProductos = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
+<!-- aqui comienza la magia TODO -->
 <!-- comienzo de la pagina html -->
 <h1>Productos</h1>
 <!-- card 1 -->
@@ -48,8 +48,11 @@ $listaProductos = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
         <div class="card">
             <img class="card-img-top" src="./img/<?php echo $producto['Imagen']; ?>" alt="">
             <div class="card-body">
-                <h4 class="card-title"> <?php echo $producto['Nombre']; ?></h4>
-                <p class="card-text">Text</p>
+                <h3 class="card-title"> <?php echo $producto['Nombre']; ?></h3>
+                <p class="card-text"><?php echo $producto['Descripcion']; ?></p>
+                <p class="card-text"><?php echo $producto['Precio']; ?></p>
+                <p class="card-text">Cantidad en stock: <?php echo $producto['Cantidad']; ?></p>
+                <p class="card-text">Categoria:<?php echo $producto['Categoria']; ?></p>
             </div>
         </div>
     </div>

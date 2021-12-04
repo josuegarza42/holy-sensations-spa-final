@@ -213,7 +213,7 @@ $listaProductos = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </div>
-
+<!-- Tabla -->
 <div class="col-md-7">
     <h1>Tabla de productos</h1> <small>Aqui puedes agregar, borrar, actualizar productos</small>
 
