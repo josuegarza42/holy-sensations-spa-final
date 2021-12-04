@@ -35,42 +35,34 @@ if (isset($_SESSION['idU']) && isset($_SESSION['nombre']))    //el usuario se au
 ?>
 
 
-
-
-
-
+<!-- conexion bd desde adm -->
+<?php
+include("administrador/config/bd.php");
+$sentenciaSQL = $conexion->prepare("SELECT * FROM promocion");
+$sentenciaSQL->execute();
+// asigna a lista productos todos los datos recuperados  con fetchAll
+$listaPromociones = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
+?>
+<!-- aqui comienza la magia TODO -->
+<!-- comienzo de la pagina html -->
 
 <h1>Promociones</h1>
+<!-- card 1 -->
+<?php foreach ($listaPromociones as $promocion) { ?>
+
 <div class="col-md-4">
     <div class="card">
-        <img class="card-img-top" src="holder.js/100x180/" alt="">
+        <img class="card-img-top" src="./img/<?php echo $promocion['Imagen']; ?>" alt="">
         <div class="card-body">
-            <h4 class="card-title">Title</h4>
-            <p class="card-text">Text</p>
+            <h3 class="card-title"> <?php echo $promocion['Nombre']; ?></h3>
+            <p class="card-text"><?php echo $promocion['Descripcion']; ?></p>
+            <p class="card-text"><?php echo $promocion['Precio']; ?></p>
+            <p class="card-text">Cantidad en stock: <?php echo $promocion['Cantidad']; ?></p>
+            <p class="card-text">Categoria:<?php echo $promocion['Categoria']; ?></p>
         </div>
     </div>
 </div>
-<div class="col-md-4">
-    <div class="card">
-        <img class="card-img-top" src="holder.js/100x180/" alt="">
-        <div class="card-body">
-            <h4 class="card-title">Title</h4>
-            <p class="card-text">Text</p>
-        </div>
-    </div>
-</div>
-<div class="col-md-4">
-    <div class="card">
-        <img class="card-img-top" src="holder.js/100x180/" alt="">
-        <div class="card-body">
-            <h4 class="card-title">Title</h4>
-            <p class="card-text">Text</p>
-        </div>
-    </div>
-</div>
+<?php  } ?>
 
-
-
-
-<?php include("template/footer.php")
+<?php include("template/footer.php");
 ?>

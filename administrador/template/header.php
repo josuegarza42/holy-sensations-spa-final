@@ -53,13 +53,13 @@ if (!isset($_SESSION['idU']) && !isset($_SESSION['nombre'])) {
                         <a href="<?php echo $url ?>/administrador/seccion/productos.php" class="nav-link">ADM Productos</a>
                     </li>
 
-                    <!-- TODO aun no jala -->
+                  <!-- listo -->
                     <li class="nav-item">
                         <a href="<?php echo $url ?>/administrador/seccion/servicios.php" class="nav-link">ADM Servicios</a>
                     </li>
                     <!-- TODO aun no jala -->
                     <li class="nav-item">
-                        <a href="#" class="nav-link">ADM Promociones</a>
+                    <a href="<?php echo $url ?>/administrador/seccion/promociones.php" class="nav-link">ADM Promociones</a>
                     </li>
                     <!-- TODO aun no jala -->
                     <li class="nav-item">
