@@ -56,9 +56,8 @@ $listaPromociones = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
         <div class="card-body">
             <h3 class="card-title"> <?php echo $promocion['Nombre']; ?></h3>
             <p class="card-text"><?php echo $promocion['Descripcion']; ?></p>
-            <p class="card-text"><?php echo $promocion['Precio']; ?></p>
-            <p class="card-text">Cantidad en stock: <?php echo $promocion['Cantidad']; ?></p>
-            <p class="card-text">Categoria:<?php echo $promocion['Categoria']; ?></p>
+            <p class="card-text">Precio:<?php echo $promocion['Precio']; ?></p>
+            <p class="card-text">Duracion: <?php echo $promocion['Duracion']; ?></p>
         </div>
     </div>
 </div>

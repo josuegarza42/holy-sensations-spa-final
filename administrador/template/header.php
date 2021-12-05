@@ -52,23 +52,23 @@ if (!isset($_SESSION['idU']) && !isset($_SESSION['nombre'])) {
                     <li class="nav-item">
                         <a href="<?php echo $url ?>/administrador/seccion/productos.php" class="nav-link">ADM Productos</a>
                     </li>
-
-                  <!-- listo -->
+                    <!-- listo -->
                     <li class="nav-item">
                         <a href="<?php echo $url ?>/administrador/seccion/servicios.php" class="nav-link">ADM Servicios</a>
                     </li>
-                    <!-- TODO aun no jala -->
+                    <!-- listo -->
                     <li class="nav-item">
-                    <a href="<?php echo $url ?>/administrador/seccion/promociones.php" class="nav-link">ADM Promociones</a>
+                        <a href="<?php echo $url ?>/administrador/seccion/promociones.php" class="nav-link">ADM Promociones</a>
+                    </li>
+                    <!-- TODO aun no jala POSIBLE CAMBIO A TERAPEUTAS AFILIADOS -->
+                    <li class="nav-item">
+                        <a href="<?php echo $url ?>/administrador/seccion/cursos.php" class="nav-link">ADM Cursos</a>
                     </li>
                     <!-- TODO aun no jala -->
                     <li class="nav-item">
                         <a href="#.php" class="nav-link">ADM compras</a>
                     </li>
-                    <!-- TODO aun no jala POSIBLE CAMBIO A TERAPEUTAS AFILIADOS -->
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">ADM Categorias</a>
-                    </li>
+
                     <!-- ADMINISTRADOR PUEDE REGRESAR A LA PAGINA EN CUESTION -->
                     <li class="nav-item">
                         <a href=" <?php echo $url ?> " class="nav-link">Ver sitio web</a>

@@ -5,7 +5,7 @@ function conectaBD()
 }
 
 
- 
+
 $ruta = "http://localhost/holy%20sensations%20spa/";
 $rutaADM = "http://localhost/holy%20sensations%20spa/administrador/seccion/";
 
@@ -72,6 +72,9 @@ function menuNormal()
                         <a href="promociones.php" class="nav-link">Promociones</a>
                     </li>
                     <li class="nav-item">
+                        <a href="cursos.php" class="nav-link">Cursos</a>
+                    </li>
+                    <li class="nav-item">
                         <a href="nosotros.php" class="nav-link">Nosotros</a>
                     </li>
 
@@ -123,6 +126,9 @@ function navbarAth()
                         <a href="promociones.php" class="nav-link">Promociones</a>
                     </li>
                     <li class="nav-item">
+                        <a href="cursos.php" class="nav-link">Cursos</a>
+                    </li>
+                    <li class="nav-item">
                         <a href="nosotros.php" class="nav-link">Nosotros</a>
                     </li>
                     <!-- carrito -->
@@ -146,7 +152,8 @@ function navbarAth()
 
 
 <?php
-function menuAdmin(){
+function menuAdmin()
+{
 ?>
 
     <!-- NAVBAR -->
@@ -175,6 +182,9 @@ function menuAdmin(){
                         <a href="promociones.php" class="nav-link">Promociones</a>
                     </li>
                     <li class="nav-item">
+                        <a href="cursos.php" class="nav-link">Cursos</a>
+                    </li>
+                    <li class="nav-item">
                         <a href="nosotros.php" class="nav-link">Nosotros</a>
                     </li>
                     <!-- carrito -->
@@ -182,7 +192,7 @@ function menuAdmin(){
                         <a href="#" class="nav-link"><i class="bi bi-cart2"></i></a>
                     </li>
                     <li class="nav-item ms-2 d-none d-md-inline">
-                    <a href="http://localhost/holy%20sensations%20spa/administrador/inicio.php" class="btn btn-secondary">Administrar</a>
+                        <a href="http://localhost/holy%20sensations%20spa/administrador/inicio.php" class="btn btn-secondary">Administrar</a>
                     </li>
 
                     <li class="nav-item ms-2 d-none d-md-inline">
@@ -365,20 +375,20 @@ function despliegaDatos($dUsr)
         <h3 class="h3 mx-auto" style="text-align:center">Tú Perfil</h3>
         <br>
         <div class="card mb-4 mx-auto" style="max-width: 320px;">
-                <div class="col">
-                    <div class="card-body">
-                        <h5 class="card-title"><b>Nombre:</b> <?php echo $_SESSION['nombre'] ?></h5>
-                        <p class="card-text">
-                        <p class="card-text"><small class="text-muted">Información de usuario:</small></p>
-                            <b>Email: </b> <?php echo $dUsr->Email ?><br>
-                            <b>Rol: </b> <?php echo $dUsr->NombreRol ?><br>
-                            <b>Direccion: </b> <?php echo $dUsr->Direccion ?><br>
+            <div class="col">
+                <div class="card-body">
+                    <h5 class="card-title"><b>Nombre:</b> <?php echo $_SESSION['nombre'] ?></h5>
+                    <p class="card-text">
+                    <p class="card-text"><small class="text-muted">Información de usuario:</small></p>
+                    <b>Email: </b> <?php echo $dUsr->Email ?><br>
+                    <b>Rol: </b> <?php echo $dUsr->NombreRol ?><br>
+                    <b>Direccion: </b> <?php echo $dUsr->Direccion ?><br>
 
-                        </p>
-     
-                        <a name="" id="" class="btn btn-danger" href="eliminarCuenta.php" role="button">Eliminar cuenta</a>
-                    </div>
+                    </p>
+
+                    <a name="" id="" class="btn btn-danger" href="eliminarCuenta.php" role="button">Eliminar cuenta</a>
                 </div>
+            </div>
 
         </div>
     </div>
