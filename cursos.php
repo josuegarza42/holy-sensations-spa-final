@@ -41,19 +41,22 @@ $listaCursos = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!-- aqui comienza la magia TODO -->
 <!-- comienzo de la pagina html -->
-<h1>Productos</h1>
+<div class="text-center">
+    <h1>Cursos</h1>
+</div>
 <!-- card 1 -->
 <?php foreach ($listaCursos as $curso) { ?>
 
-    <div class="col-md-4">
+    <div class="col-md-6 mt-3">
         <div class="card">
             <img class="card-img-top" src="./img/<?php echo $curso['Imagen']; ?>" alt="">
             <div class="card-body">
                 <h3 class="card-title"> <?php echo $curso['Nombre']; ?></h3>
                 <p class="card-text"><?php echo $curso['Descripcion']; ?></p>
-                <p class="card-text">Duracion del curso:<?php echo $curso['Duracion']; ?></p>
-                <p class="card-text">Fecha: <?php echo $curso['Fecha']; ?></p>
-                <p class="card-text">Cupo:<?php echo $curso['Cupo']; ?></p>
+                <p class="card-text"><i class="bi bi-alarm"></i> Duracion del curso:<?php echo $curso['Duracion']; ?></p>
+                <p class="card-text"><i class="bi bi-calendar2-week"></i> Fecha:<?php echo $curso['Fecha']; ?></p>
+                <p class="card-text"><i class="bi bi-people-fill"></i> Cupo:<?php echo $curso['Cupo']; ?></p>
+                <p>Unicamente por Whatsapp</p>
             </div>
         </div>
     </div>

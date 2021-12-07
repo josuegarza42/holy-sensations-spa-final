@@ -180,17 +180,17 @@ $listaCursos = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 
                 <!-- Duracion -->
                 <div class="form-group mb-3">
-                    <label class="txtDuracion"><i class="bi bi-bag-plus"></i> Duracion del curso:</label>
+                    <label class="txtDuracion"><i class="bi bi-alarm"></i> Duracion del curso:</label>
                     <input type="text" required class="form-control" value=" <?php echo $txtDuracion; ?>" name="txtDuracion" id="txtDuracion" placeholder="Inserta la cantidad que tienes del curso">
                 </div>
                 <!-- Fecha -->
                 <div class="form-group mb-3">
-                    <label class="txtFecha"><i class="bi bi-currency-dollar"></i> Fecha del curso:</label>
+                    <label class="txtFecha"><i class="bi bi-calendar-week"></i> Fecha del curso:</label>
                     <input type="text" required class="form-control" value=" <?php echo $txtFecha; ?>" name="txtFecha" id="txtFecha" placeholder="Inserta el precio del curso">
                 </div>
                 <!-- cupo -->
                 <div class="form-group mb-3">
-                    <label class="txtCupo"><i class="bi bi-currency-dollar"></i> Cupo del curso:</label>
+                    <label class="txtCupo"><i class="bi bi-people-fill"></i> Cupo del curso:</label>
                     <input type="text" required class="form-control" value=" <?php echo $txtCupo; ?>" name="txtCupo" id="txtCupo" placeholder="Inserta el precio del curso">
                 </div>
                 <!-- imagen -->

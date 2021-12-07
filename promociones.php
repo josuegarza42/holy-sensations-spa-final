@@ -17,19 +17,16 @@ if (isset($_SESSION['idU']) && isset($_SESSION['nombre']))    //el usuario se au
 if (isset($_SESSION['idU']) == "" && isset($_SESSION['nombre']) == "")    //el usuario no se autenticó
 {
     menuNormal();
-
 }
 if (isset($_SESSION['idU']) && isset($_SESSION['nombre']))    //el usuario se autenticó
 {
     if ($rolUsr == "General") {
         navbarAth();
         echo "<h1>Hola " . $_SESSION['nombre'] . "</h1>";
-
     }
     if ($rolUsr == "Administrador") {
         menuAdmin($NombreUsr);
         echo "<h1>Hola " . $_SESSION['nombre'] . "</h1>";
-   
     }
 }
 ?>
@@ -46,21 +43,23 @@ $listaPromociones = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 <!-- aqui comienza la magia TODO -->
 <!-- comienzo de la pagina html -->
 
-<h1>Promociones</h1>
+<div class="text-center">
+    <h1>Promociones</h1>
+</div>
 <!-- card 1 -->
 <?php foreach ($listaPromociones as $promocion) { ?>
 
-<div class="col-md-4">
-    <div class="card">
-        <img class="card-img-top" src="./img/<?php echo $promocion['Imagen']; ?>" alt="">
-        <div class="card-body">
-            <h3 class="card-title"> <?php echo $promocion['Nombre']; ?></h3>
-            <p class="card-text"><?php echo $promocion['Descripcion']; ?></p>
-            <p class="card-text">Precio:<?php echo $promocion['Precio']; ?></p>
-            <p class="card-text">Duracion: <?php echo $promocion['Duracion']; ?></p>
+    <div class="col-md-4 mt-3">
+        <div class="card">
+            <img class="card-img-top" src="./img/<?php echo $promocion['Imagen']; ?>" alt="">
+            <div class="card-body">
+                <h3 class="card-title"> <?php echo $promocion['Nombre']; ?></h3>
+                <p class="card-text"><?php echo $promocion['Descripcion']; ?></p>
+                <p class="card-text">Precio:<i class="bi bi-currency-dollar"></i><?php echo $promocion['Precio']; ?></p>
+                <p class="card-text"><i class="bi bi-alarm"></i> Duracion:<?php echo $promocion['Duracion']; ?></p>
+            </div>
         </div>
     </div>
-</div>
 <?php  } ?>
 
 <?php include("template/footer.php");

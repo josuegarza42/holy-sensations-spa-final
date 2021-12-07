@@ -55,43 +55,44 @@ if (isset($_GET['err']) && $_GET['err'] != "") {
     <div class="row">
         <h1 class="h2 text-center">Hola ingresa tus datos</h1>
         <?php if ($msg != "") echo "<div id='msgErr'>$msg</div>"; ?>
-        <div class="col-md-4">
+        <div class="col-md-6">
 
         </div>
-        <div class="col-md-4">
+        <div class="col-md-12">
             <br><br><br>
             <div class="card">
-                <div class="card-header">
-                    <p><i class="bi bi-door-open"></i>Registrate</p>
+                <div class="card-header text-center">
+                    <p><i class="bi bi-door-open"></i> Registrate</p>
                 </div>
                 <div class="card-body">
                     <!-- se envian los datos por el metodo post -->
                     <!-- LOGIN FORM -->
                     <form action="registraUsuario.php" method="get" onsubmit="return verificaForm()">
-                        <div class="mb-3">
+                        <div class="mb-3 text-center">
                             <label class="form-label"> <i class="bi bi-person-circle"></i> Nombre</label>
                             <input type="text" class="form-control" name="Nombre" id="Nombre" placeholder="Ingresa tu nombre">
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label"> <i class="bi bi-person-circle"></i>Contraseña</label>
-                            <input type="password" class="form-control" name="Pwd" id="Pwd">
+                        <div class="mb-3  text-center">
+                            <label class="form-label"> <i class="bi bi-shield-lock"></i> Contraseña</label>
+                            <input type="password" class="form-control" name="Pwd" id="Pwd" placeholder="Ingresa tu Contraseña">
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label"> <i class="bi bi-person-circle"></i>Repite contraseña</label>
-                            <input type="password" class="form-control" name="rePwd" id="rePwd">
+                        <div class="mb-3 text-center">
+                            <label class="form-label"> <i class="bi bi-shield-lock"></i> Repite contraseña</label>
+                            <input type="password" class="form-control" name="rePwd" id="rePwd" placeholder="Reingresa tu Contraseña">
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label"> <i class="bi bi-person-circle"></i>Email</label>
+                        <div class="mb-3 text-center">
+                            <label class="form-label"> <i class="bi bi-envelope"></i> Email</label>
                             <input type="email" class="form-control" name="Email" id="Email" placeholder="Ingresa tu Email">
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label"> <i class="bi bi-person-circle"></i>Dirección</label>
+                        <div class="mb-3  text-center">
+                            <label class="form-label"> <i class="bi bi-geo-alt"></i> Dirección</label>
                             <input type="text" class="form-control" name="Direccion" id="Direccion" placeholder="Ingresa tu Direccion">
                         </div>
 
                         <input type="hidden" id="idRol" name="idRol" value="1">
-                        <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Registrate</button>
-
+                        <div class=" text-center">
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Registrate</button>
+                        </div>
                     </form>
                 </div>
             </div>

@@ -302,7 +302,7 @@ function estructuraPrincipalIndex()
         </div>
     </section>
 
-    <section id="reviews" class="bg-light my-5">
+    <section id="reviews" class=" my-5">
         <div class="container-lg">
             <div class="text-center">
                 <h2><i class="bi bi-stars"></i>Reviews</h2>
@@ -312,7 +312,7 @@ function estructuraPrincipalIndex()
             <div class="row justify-content-center my-5">
                 <div class="col-lg-8">
                     <div class="list-group">
-                        <div class="list-group-item py-3">
+                        <div class="bg-light list-group-item py-3">
                             <div class="pb-2">
                                 <i class="bi bi-star-fill"></i>
                                 <i class="bi bi-star-fill"></i>
@@ -327,7 +327,7 @@ function estructuraPrincipalIndex()
                             <small>Review by: Maria Villanueva.</small>
                         </div>
                         <!--  -->
-                        <div class="list-group-item py-3">
+                        <div class="bg-light list-group-item py-3">
                             <div class="pb-2">
                                 <i class="bi bi-star-fill"></i>
                                 <i class="bi bi-star-fill"></i>
@@ -342,7 +342,7 @@ function estructuraPrincipalIndex()
                             <small>Review by: Samara Castillo.</small>
                         </div>
                         <!--  -->
-                        <div class="list-group-item py-3">
+                        <div class="bg-light list-group-item py-3">
                             <div class="pb-2">
                                 <i class="bi bi-star-fill"></i>
                                 <i class="bi bi-star-fill"></i>

@@ -45,10 +45,10 @@ if (isset($_GET['Nombre']) && isset($_GET['Pwd'])) {
 <!-- formulario -->
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
 
         </div>
-        <div class="col-md-4">
+        <div class="col-md-12">
 
             <div>
                 <?php
@@ -67,16 +67,23 @@ if (isset($_GET['Nombre']) && isset($_GET['Pwd'])) {
                     <!-- se envian los datos por el metodo post -->
                     <!-- LOGIN FORM -->
                     <form action="login.php" method="get" onsubmit="return verificaForm()" class="mx-auto">
-                        <div class="mb-3">
+                        <div class="mb-3 text-center">
                             <label class="form-label"> <i class="bi bi-person-circle"></i> Usuario</label>
+                            <br>
                             <input type="text" class="form-control" name="Nombre" id="Nombre" placeholder="Ingresa tu usuario">
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3 text-center">
                             <label class="form-label"> <i class="bi bi-shield-lock"></i> Contraseña</label>
+                            <br>
                             <input type="password" class="form-control" name="Pwd" id="Pwd" placeholder="Ingresa tu contraseña">
                         </div>
-                        <button type="submit" class="btn btn-primary"><i class="bi bi-person-check"></i> Iniciar sesion </button>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-person-check"></i> Iniciar sesion </button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
+
+        <?php include("template/footer.php");
+        ?>

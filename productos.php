@@ -40,18 +40,20 @@ $listaProductos = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!-- aqui comienza la magia TODO -->
 <!-- comienzo de la pagina html -->
-<h1>Productos</h1>
+<div class="text-center">
+    <h1>Productos</h1>
+</div>
 <!-- card 1 -->
 <?php foreach ($listaProductos as $producto) { ?>
 
-    <div class="col-md-4">
+    <div class="col-md-4 mt-3">
         <div class="card">
             <img class="card-img-top" src="./img/<?php echo $producto['Imagen']; ?>" alt="">
             <div class="card-body">
                 <h3 class="card-title"> <?php echo $producto['Nombre']; ?></h3>
                 <p class="card-text"><?php echo $producto['Descripcion']; ?></p>
-                <p class="card-text"> Precio:<?php echo $producto['Precio']; ?></p>
-                <p class="card-text">Cantidad en stock: <?php echo $producto['Cantidad']; ?></p>
+                <p class="card-text"> Precio:<i class="bi bi-currency-dollar"></i><?php echo $producto['Precio']; ?></p>
+                <p class="card-text"><i class="fas fa-store"></i> Cantidad en stock: <?php echo $producto['Cantidad']; ?></p>
 
                 <!-- <p class="card-text">Categoria:
                     <?php
@@ -62,5 +64,5 @@ $listaProductos = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
     </div>
 <?php  } ?>
 
-<?php include("template/footer.php")
+<?php include("template/footer.php");
 ?>

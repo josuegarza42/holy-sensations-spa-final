@@ -17,14 +17,12 @@ if (isset($_SESSION['idU']) && isset($_SESSION['nombre']))    //el usuario se au
 if (isset($_SESSION['idU']) == "" && isset($_SESSION['nombre']) == "")    //el usuario no se autenticó
 {
     menuNormal();
-
 }
 if (isset($_SESSION['idU']) && isset($_SESSION['nombre']))    //el usuario se autenticó
 {
     if ($rolUsr == "General") {
         navbarAth();
         echo "<h1>Hola " . $_SESSION['nombre'] . "</h1>";
-
     }
     if ($rolUsr == "Administrador") {
         menuAdmin($NombreUsr);
@@ -41,23 +39,25 @@ $sentenciaSQL->execute();
 $listaServicios = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!-- aqui comienza la magia TODO -->
-
+<div class="text-center">
+    <h1>Servicios</h1>
+</div>
 
 <!-- card 1 -->
 <?php foreach ($listaServicios as $servicio) { ?>
 
-<div class="col-md-4">
-    <div class="card">
-        <img class="card-img-top" src="./img/<?php echo $servicio['Imagen']; ?>" alt="">
-        <div class="card-body">
-            <h3 class="card-title"> <?php echo $servicio['Nombre']; ?></h3>
-            <p class="card-text"><?php echo $servicio['Descripcion']; ?></p>
-            <p class="card-text">Precio: <?php echo $servicio['Precio']; ?></p>
-            <p class="card-text">Duracion: <?php echo $servicio['Duracion']; ?></p>
+    <div class="col-md-4 mt-3">
+        <div class="card">
+            <img class="card-img-top" src="./img/<?php echo $servicio['Imagen']; ?>" alt="">
+            <div class="card-body">
+                <h3 class="card-title"> <?php echo $servicio['Nombre']; ?></h3>
+                <p class="card-text"><?php echo $servicio['Descripcion']; ?></p>
+                <p class="card-text">Precio: <i class="bi bi-currency-dollar"></i><?php echo $servicio['Precio']; ?></p>
+                <p class="card-text"><i class="bi bi-alarm"></i> Duracion: <?php echo $servicio['Duracion']; ?></p>
 
+            </div>
         </div>
     </div>
-</div>
 <?php  } ?>
 
 <?php include("template/footer.php");

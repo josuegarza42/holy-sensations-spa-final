@@ -175,7 +175,7 @@ $listaPromociones = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <!-- Duracion -->
                 <div class="form-group mb-3">
-                    <label class="txtDuracion"><i class="bi bi-bag-plus"></i> Duracion de la promocion:</label>
+                    <label class="txtDuracion"><i class="bi bi-alarm"></i> Duracion de la promocion:</label>
                     <input type="text" required class="form-control" value=" <?php echo $txtDuracion; ?>" name="txtDuracion" id="txtDuracion" placeholder="Inserta la cantidad que tienes del promocion">
                 </div>
                 <!-- imagen -->
