@@ -30,6 +30,7 @@ if (isset($_SESSION['idU']) && isset($_SESSION['nombre']))    //el usuario se au
     }
 }
 ?>
+
 <!-- conexion bd desde adm -->
 <?php
 include("administrador/config/bd.php");
@@ -54,7 +55,8 @@ $listaProductos = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                 <p class="card-text"><?php echo $producto['Descripcion']; ?></p>
                 <p class="card-text"> Precio:<i class="bi bi-currency-dollar"></i><?php echo $producto['Precio']; ?></p>
                 <p class="card-text"><i class="fas fa-store"></i> Cantidad en stock: <?php echo $producto['Cantidad']; ?></p>
-
+               <!-- recupero por header -->
+                <a href="visualizarProducto.php?idP=<?php echo $producto['idProducto']; ?>"  class="btn btn-secondary"><i class="bi bi-cart-plus"></i> vsualizar producto</a>
                 <!-- <p class="card-text">Categoria:
                     <?php
                     //  echo $producto['Categoria'];

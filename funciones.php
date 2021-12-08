@@ -79,7 +79,7 @@ function menuNormal()
                     </li>
 
                     <li class="nav-item d-md">
-                        <a href="#" class="nav-link"><i class="bi bi-cart2"></i></a>
+                        <a href="verCarrito.php" class="nav-link"><i class="bi bi-cart2"></i></a>
                     </li>
                     <li class="nav-item ms-2 d-none d-md-inline">
                         <a href="login.php" class="btn btn-secondary">Login</a>
@@ -133,7 +133,7 @@ function navbarAth()
                     </li>
                     <!-- carrito -->
                     <li class="nav-item d-md">
-                        <a href="#" class="nav-link"><i class="bi bi-cart2"></i></a>
+                        <a href="verCarrito.php" class="nav-link"><i class="bi bi-cart2"></i></a>
                     </li>
                     <li class="nav-item ms-2 d-none d-md-inline">
                         <a href="cuenta.php" class="btn btn-secondary">Cuenta</a>
@@ -189,7 +189,7 @@ function menuAdmin()
                     </li>
                     <!-- carrito -->
                     <li class="nav-item d-md">
-                        <a href="#" class="nav-link"><i class="bi bi-cart2"></i></a>
+                        <a href="verCarrito.php" class="nav-link"><i class="bi bi-cart2"></i></a>
                     </li>
                     <li class="nav-item ms-2 d-none d-md-inline">
                         <a href="http://localhost/holy%20sensations%20spa/administrador/inicio.php" class="btn btn-secondary">Administrar</a>
