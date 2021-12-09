@@ -54,8 +54,11 @@ $listaServicios = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                 <p class="card-text"><?php echo $servicio['Descripcion']; ?></p>
                 <p class="card-text">Precio: <i class="bi bi-currency-dollar"></i><?php echo $servicio['Precio']; ?></p>
                 <p class="card-text"><i class="bi bi-alarm"></i> Duracion: <?php echo $servicio['Duracion']; ?></p>
-
+                <p>Unicamente por Whatsapp</p>
             </div>
+            <a class="btn btn-primary" target="_blank" href="https://wa.me/c/5214446588106">
+                <p>Whatsapp <i class="bi bi-whatsapp"></i></p>
+            </a>
         </div>
     </div>
 <?php  } ?>
