@@ -32,6 +32,21 @@ if (isset($_SESSION['idU']) && isset($_SESSION['nombre']))    //el usuario se au
 }
 ?>
 
+<script type="text/javascript">
+    function confirmaEliminacion() {
+        if (window.confirm("Estas por eliminar un producto de tú carrito ¿Seguro que deseas hacerlo?")) {
+            if (window.confirm("¿CONFIRMAS que deseas eliminar?")) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+</script>
+
+
 <div class="container-fluid ">
     <?php
     $qry = "select * from carrito where idUsuario=" . $_SESSION['idU'];
@@ -66,7 +81,7 @@ if (isset($_SESSION['idU']) && isset($_SESSION['nombre']))    //el usuario se au
                                 </div>
                             </div>
                         </div>
-                        <a href="eliminaCarrito.php?idP=<?php echo $idCarrito['idProducto']; ?>" class="btn btn-danger">Borrar</a>
+                        <a href="eliminaCarrito.php?idP=<?php echo $idCarrito['idProducto']; ?>" class="btn btn-danger" >Borrar</a>
 
                     </div>
 
