@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-12-2021 a las 16:11:44
+-- Tiempo de generación: 09-12-2021 a las 18:51:24
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -38,7 +38,7 @@ CREATE TABLE `carrito` (
 --
 
 INSERT INTO `carrito` (`idUsuario`, `Cantidad`, `idProducto`) VALUES
-(4, 1, 35);
+(4, 2, 35);
 
 -- --------------------------------------------------------
 
