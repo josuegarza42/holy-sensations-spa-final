@@ -69,5 +69,10 @@ $producto = mysqli_fetch_array($rs);
     </div>
 </section>
 
+<div class="alert alert-info" role="alert">
+					Compartir <br>
+					<code><?php echo $ruta . 'visualizarProducto.php' . '?' . 'idP=' . $producto['idProducto'] ?></code>
+				</div>
+
 <?php include("template/footer.php");
 ?>
