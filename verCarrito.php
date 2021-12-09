@@ -32,30 +32,26 @@ if (isset($_SESSION['idU']) && isset($_SESSION['nombre']))    //el usuario se au
 }
 ?>
 
+<div class="container-fluid ">
+    <?php
+    $qry = "select * from carrito where idUsuario=" . $_SESSION['idU'];
+    $rs = mysqli_query($conn, $qry);
+    if (mysqli_num_rows($rs)) {
+        while ($idCarrito = mysqli_fetch_array($rs)) {
+            $qry2 = "select * from producto where idProducto=" . $idCarrito["idProducto"];
+            $rs2 = mysqli_query($conn, $qry2);
+            if (mysqli_num_rows($rs2)) {
 
-
-
-<div class="container-fluid">
-    <div class="card mb-4">
-        <div class="row g-0">
-            <?php
-            $qry = "select * from carrito where idUsuario=" . $_SESSION['idU'];
-            $rs = mysqli_query($conn, $qry);
-            if (mysqli_num_rows($rs)) {
-                while ($idCarrito = mysqli_fetch_array($rs)) {
-                    $qry2 = "select * from producto where idProducto=" . $idCarrito["idProducto"];
-                    $rs2 = mysqli_query($conn, $qry2);
-                    if (mysqli_num_rows($rs2)) {
-
-                        while ($idProducto = mysqli_fetch_array($rs2)) {
-            ?>
-                            <?php
-                            $precio = $idProducto["Precio"];
-                            $CantidadCarrito = $idCarrito["Cantidad"];
-                            $total = $total + ($CantidadCarrito * $precio);
-                            ?>
-                            <div class="col">
-                                <img src="./img/<?php echo $idProducto['Imagen']; ?>" class="img-fluid rounded-start" alt="...">
+                while ($idProducto = mysqli_fetch_array($rs2)) {
+                    $precio = $idProducto["Precio"];
+                    $CantidadCarrito = $idCarrito["Cantidad"];
+                    $total = $total + ($CantidadCarrito * $precio);
+    ?>
+                    <!--  -->
+                    <div class="card mb-4 mx-auto align-content-center" style="width: 42rem;">
+                        <div class="row g-0">
+                            <div class="col-4">
+                                <img src="./img/<?php echo $idProducto['Imagen']; ?>" class="img-fluid rounded-start" width="200px" height="200px" alt="...">
                             </div>
 
                             <div class="col">
@@ -69,24 +65,28 @@ if (isset($_SESSION['idU']) && isset($_SESSION['nombre']))    //el usuario se au
                                     <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
                                 </div>
                             </div>
-        </div>
-    </div>
+                        </div>
+                        <a href="eliminaCarrito.php?idP=<?php echo $idCarrito['idProducto']; ?>" class="btn btn-danger">Borrar</a>
+
+                    </div>
+
+        <?php
+                }
+            }
+        }
+    } else {
+        ?>
+        <br>
+        <h3 class="h3 mx-auto" style="text-align:center">No tienes productos en tu carrito</h3>
+        <br>
+    <?php
+    }
+    ?>
+
 </div>
 
-<?php
-                        }
-                    }
-                }
-            } else {
-?>
-<br>
-<h3 class="h3 mx-auto" style="text-align:center">No tienes productos en tu carrito</h3>
-<br>
-<?php
-            }
-?>
+<h3 class="mx-auto text-center">El total de tu compra es de: $<?php echo $total ?></h3>
 
-<h3>El total de tu compra es de: $<?php echo $total ?></h3>
 
 <?php include("template/footer.php");
 ?>
