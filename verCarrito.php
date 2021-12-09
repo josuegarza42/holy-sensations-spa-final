@@ -46,7 +46,6 @@ if (isset($_SESSION['idU']) && isset($_SESSION['nombre']))    //el usuario se au
     }
 </script>
 
-
 <div class="container-fluid ">
     <?php
     $qry = "select * from carrito where idUsuario=" . $_SESSION['idU'];
@@ -81,10 +80,12 @@ if (isset($_SESSION['idU']) && isset($_SESSION['nombre']))    //el usuario se au
                                 </div>
                             </div>
                         </div>
-                        <a href="eliminaCarrito.php?idP=<?php echo $idCarrito['idProducto']; ?>" class="btn btn-danger" >Borrar</a>
+                        <a href="eliminaCarrito.php?idP=<?php echo $idCarrito['idProducto']; ?>" class="btn btn-danger">Borrar</a>
 
                     </div>
-
+                    <div class="card mb-4 mx-auto align-content-center" style="width: 42rem;">
+                        <a href="comprarAhora.php" class="btn btn-primary align-content-center">Comprar ahora</a>
+                    </div>
         <?php
                 }
             }
