@@ -78,9 +78,6 @@ function menuNormal()
                         <a href="nosotros.php" class="nav-link">Nosotros</a>
                     </li>
 
-                    <li class="nav-item d-md">
-                        <a href="verCarrito.php" class="nav-link"><i class="bi bi-cart2"></i></a>
-                    </li>
                     <li class="nav-item ms-2 d-none d-md-inline">
                         <a href="login.php" class="btn btn-secondary">Login</a>
                     </li>

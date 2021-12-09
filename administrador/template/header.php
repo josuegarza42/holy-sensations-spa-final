@@ -64,10 +64,6 @@ if (!isset($_SESSION['idU']) && !isset($_SESSION['nombre'])) {
                     <li class="nav-item">
                         <a href="<?php echo $url ?>/administrador/seccion/cursos.php" class="nav-link">ADM Cursos</a>
                     </li>
-                    <!-- TODO aun no jala -->
-                    <li class="nav-item">
-                        <a href="#.php" class="nav-link">ADM compras</a>
-                    </li>
 
                     <!-- ADMINISTRADOR PUEDE REGRESAR A LA PAGINA EN CUESTION -->
                     <li class="nav-item">
