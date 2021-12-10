@@ -24,25 +24,16 @@ if (
 $Cantidad =  $_GET['Cantidad'];
 extract($_GET); //crea las varibales txtnombre,txtUsuario,etc...
 $conn = conectaBD();
-settype( $Cantidad,'int'); 
+settype($Cantidad, 'int');
 var_dump($Cantidad);
 
-
-$idUsuario= $_SESSION['idU'];
+$idUsuario = $_SESSION['idU'];
 
 $consulta = "insert into 
 carrito (idUsuario,Cantidad,idProducto) value ('$idUsuario','$Cantidad','$idP')";
-$rs = mysqli_query($conn,$consulta);
-
+$rs = mysqli_query($conn, $consulta);
 
 mysqli_close($conn);
 
-header("location:" .$ruta. "visualizarProducto.php?idP=$idP");
-
-
-
-
-
-
+header("location:" . $ruta . "visualizarProducto.php?idP=$idP");
 ?>
-

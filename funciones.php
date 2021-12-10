@@ -4,11 +4,9 @@ function conectaBD()
     return mysqli_connect("localhost", "root", "", "spa");
 }
 
-
-
 $ruta = "http://localhost/holy%20sensations%20spa/";
 $rutaADM = "http://localhost/holy%20sensations%20spa/administrador/seccion/";
-
+$itemsCarrito = 0;
 function recuperaRol($c)
 {
     //el usuario debe estar autenticado por medio de $_SESSION["idU"]
@@ -17,6 +15,22 @@ function recuperaRol($c)
     $filaNombre = mysqli_fetch_object($rs);
     return $filaNombre->Nombre;
 }
+
+function recuperaCantidad($c)
+{
+    $total = 0;
+    $qry = "select Cantidad from carrito where idUsuario=" . $_SESSION['idU'];
+    $rs = mysqli_query($c, $qry);
+
+    if (mysqli_num_rows($rs)) {
+        while ($Cantidades = mysqli_fetch_array($rs)) {
+
+            $total = $total + $Cantidades['Cantidad'];
+        }
+    }
+    return $total;
+}
+
 function recuperaNombre($c)
 {
     //el usuario debe estar autenticado por medio de $_SESSION["idU"]
@@ -130,8 +144,14 @@ function navbarAth()
                     </li>
                     <!-- carrito -->
                     <li class="nav-item d-md">
-                        <a href="verCarrito.php" class="nav-link"><i class="bi bi-cart2"></i></a>
+                        <?php
+                        $conn = conectaBD();
+                        $itemsCarrito = recuperaCantidad($conn);
+                        ?>
+                        <a href="verCarrito.php" class="nav-link"><i class="bi bi-cart2"></i> <?php echo $itemsCarrito; ?> </a>
+
                     </li>
+
                     <li class="nav-item ms-2 d-none d-md-inline">
                         <a href="cuenta.php" class="btn btn-secondary">Cuenta</a>
                     </li>
@@ -142,6 +162,7 @@ function navbarAth()
             </div>
         </div>
     </nav>
+
 <?php
 }
 ?>
@@ -186,7 +207,12 @@ function menuAdmin()
                     </li>
                     <!-- carrito -->
                     <li class="nav-item d-md">
-                        <a href="verCarrito.php" class="nav-link"><i class="bi bi-cart2"></i></a>
+                        <?php
+                        $conn = conectaBD();
+                        $itemsCarrito = recuperaCantidad($conn);
+                        ?>
+                        <a href="verCarrito.php" class="nav-link"><i class="bi bi-cart2"></i> <?php echo $itemsCarrito; ?> </a>
+
                     </li>
                     <li class="nav-item ms-2 d-none d-md-inline">
                         <a href="http://localhost/holy%20sensations%20spa/administrador/inicio.php" class="btn btn-secondary">Administrar</a>

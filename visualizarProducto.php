@@ -21,13 +21,14 @@ if (isset($_SESSION['idU']) && isset($_SESSION['nombre']))    //el usuario se au
 {
     if ($rolUsr == "General") {
         navbarAth();
-        echo "<h1>Hola " . $_SESSION['nombre'] . "</h1>";
+        echo "<h1>Hola " . $_SESSION['nombre'] . "</h1>";    
     }
     if ($rolUsr == "Administrador") {
         menuAdmin($NombreUsr);
         echo "<h1>Hola " . $_SESSION['nombre'] . "</h1>";
     }
 }
+
 ?>
 <?php
 $qry = "select * from producto where idProducto=" . $_GET['idP'];
@@ -48,6 +49,7 @@ $producto = mysqli_fetch_array($rs);
                         <p class="card-text"> Precio:<i class="bi bi-currency-dollar"></i><?php echo $producto['Precio']; ?></p>
                         <form method="get" action="agregarCarrito.php">
                             <p class="card-text"><b>Cantidad:</b></p>
+
                             <select name="Cantidad">
                                 <option value="1" selected>1</option>
                                 <option value="2">2</option>
@@ -57,8 +59,10 @@ $producto = mysqli_fetch_array($rs);
                             </select>
                             <br>
                             <br>
-                            <input type="submit" value="Añadir al carrito">
+
+                            <input type="submit" onclick="prueba()" value="Añadir al carrito">
                             <input type="hidden" name="idP" value="<?php echo $producto['idProducto']; ?>">
+
                             <br>
                         </form>
                         <br><br>
@@ -70,9 +74,9 @@ $producto = mysqli_fetch_array($rs);
 </section>
 
 <div class="alert alert-info" role="alert">
-					Compartir <br>
-					<code><?php echo $ruta . 'visualizarProducto.php' . '?' . 'idP=' . $producto['idProducto'] ?></code>
-				</div>
+    Compartir <br>
+    <code><?php echo $ruta . 'visualizarProducto.php' . '?' . 'idP=' . $producto['idProducto'] ?></code>
+</div>
 
 <?php include("template/footer.php");
 ?>

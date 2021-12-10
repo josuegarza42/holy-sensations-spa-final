@@ -57,11 +57,12 @@ $listaCursos = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                 <p class="card-text"><i class="bi bi-calendar2-week"></i> Fecha:<?php echo $curso['Fecha']; ?></p>
                 <p class="card-text"><i class="bi bi-people-fill"></i> Cupo:<?php echo $curso['Cupo']; ?></p>
 
-                <form>
+                <form  method="get" action="agregaCurso.php">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Aun puedes inscribirte a este curso:</label>
                         <p>Coloca tu email y nosotros nos contactamos contigo.</p>
-                        <input type="email" class="form-control" id="" aria-describedby="emailHelp">
+                        <input type="hidden" name="curso" value=" <?php echo $curso['idCurso'];  ?>">
+                        <input type="email" class="form-control" name="correo" id="" aria-describedby="emailHelp">
                     </div>
                     <button type="submit" class="btn btn-primary">Suscribirse</button>
                 </form>

@@ -8,6 +8,7 @@ if (isset($_SESSION['idU']) && isset($_SESSION['nombre']))    //el usuario se au
 {
     $rolUsr = recuperaRol($conn);
     $NombreUsr = recuperaNombre($conn);
+
 }
 ?>
 
@@ -23,6 +24,7 @@ if (isset($_SESSION['idU']) && isset($_SESSION['nombre']))    //el usuario se au
     if ($rolUsr == "General") {
         navbarAth();
         echo "<h1>Hola " . $_SESSION['nombre'] . "</h1>";
+  
     }
     if ($rolUsr == "Administrador") {
         //   boton para ir a adm y boton para regresar
@@ -102,7 +104,6 @@ if (isset($_SESSION['idU']) && isset($_SESSION['nombre']))    //el usuario se au
 </div>
 
 <h3 class="mx-auto text-center">El total de tu compra es de: $<?php echo $total ?></h3>
-
 
 <?php include("template/footer.php");
 ?>
